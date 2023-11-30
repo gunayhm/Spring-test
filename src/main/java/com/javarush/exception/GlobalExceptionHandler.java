@@ -1,4 +1,4 @@
-package ru.javarush.exception;
+package com.javarush.exception;
 
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public RestExceptionResponse handleServiceExceptions(ResourceNotFoundException ex,
-                                                         HttpServletRequest request) {
+    @ExceptionHandler(ru.javarush.exception.ResourceNotFoundException.class)
+    public RestExceptionResponse handleServiceExceptions(
+            ru.javarush.exception.ResourceNotFoundException ex,
+            HttpServletRequest request) {
         var processKey = UUID.randomUUID().toString();
 
         log.error("Service error, status: uuid: {}, message: {}",
